@@ -172,19 +172,24 @@ home : Model -> Browser.Document Msg
 home model =
     { title = "Boko - Home"
     , body =
-        [ button [ onClick GetInputList, class "bg-red-400" ] [ text "get inputs" ]
-        , text <| Debug.toString model.inputs
-        , div []
-            [ TextInput.view model.scoreInputP1 UpdateScoreP1
-            , TextInput.view model.textInputP1 UpdateP1
-            ]
-        , div []
-            [ button
-                [ type_ "button"
-                , onClick <| UpdateObs [ TextInput.toInput model.textInputP1 ]
-                , class "inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        [ div [ class "flex justify-center items-center h-screen" ]
+            [ div [] 
+                [ button [ onClick GetInputList, class "bg-red-400" ] [ text "get inputs" ],
+                a [ href "/settings", class "inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" ] [ text "settings" ]
+                , text <| Debug.toString model.inputs
+                , div []
+                    [ TextInput.view model.scoreInputP1 UpdateScoreP1
+                    , TextInput.view model.textInputP1 UpdateP1
+                    ]
+                , div []
+                    [ button
+                        [ type_ "button"
+                        , onClick <| UpdateObs [ TextInput.toInput model.textInputP1 ]
+                        , class "inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                        ]
+                        [ text "Update OBS" ]
+                    ]
                 ]
-                [ text "Update OBS" ]
             ]
         ]
     }
