@@ -2,7 +2,7 @@
 with (import <nixpkgs> {});
 mkShell {
   buildInputs = [
-    nodejs-17_x
+    nodejs-19_x
     yarn
     rustup
   ];
